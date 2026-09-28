@@ -1,0 +1,25 @@
+You are working inside a project directory that already holds a freshly scaffolded starter for the framework named in the "Framework:" line below, with all of its dependencies installed. Build the SaaS product described below in this project.
+
+Process rules:
+- Start editing files immediately. Do not reply with a plan, a summary, a question, or a progress note before you have written code.
+- Use the tools to create and edit real files in this directory. Text answers are not accepted as work.
+- Stack: the framework named below, inside the starter in this directory. Do not add, remove or upgrade npm packages and do not run npm install; everything you need is already installed. The finished product makes no CDN or network requests.
+- Before you finish, run `npm run build` and fix every error it reports. The build must write the site to the dist folder with dist/index.html as the entry point; it will be served by a static web server with dist as the site root.
+- Do not start a long-running server and wait on it. Run one-shot commands only. If you start a short-lived static server to check the built page, use a random port between 20000 and 60000 and stop it yourself before you finish.
+- Do not open or view image files with any tool.
+- To check the page in a browser, use only the headless Chromium at [local headless Chromium] (for example with --headless --dump-dom or --screenshot). Do not search for, install, or start any other browser.
+- Stop when the product is complete.
+- Work only inside this directory. Do not list, read, or search any other directory on this machine. Nothing outside this directory is part of the task.
+- Do not stop, kill or signal any process you did not start yourself. Other programs on this machine are not part of the task.
+
+Product rules that apply to every screen:
+- All data lives in the browser. Persist the full application state to localStorage under the exact key given below, and reload it on start.
+- On first run, with nothing in localStorage, seed the state with the seed records listed below. Seed dates are relative to today.
+- Every list, form, and action described below must actually work: create, edit, delete, and any computed values.
+- Validation errors must be shown next to the field that caused them and must block the save.
+- Add a visible "Reset data" control that clears the persistence key and restores the seed records.
+- Use hash routes (for example index.html#/plans) for the screens listed below, so each screen has its own URL.
+- Give every element named in the test-id list below that exact data-testid attribute.
+- The product must work at 390 pixels wide and at 1120 pixels wide with no horizontal page scrolling.
+- Every interactive control must be reachable by keyboard and must have an accessible name.
+- The visual design is scored on how creative and premium it feels, how well it fits this product's domain and its users, and how distinct it is from a generic starter or template look. Add a DESIGN.md of five sentences or fewer stating the design decisions you made and why.

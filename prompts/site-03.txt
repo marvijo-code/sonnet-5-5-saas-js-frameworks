@@ -1,0 +1,17 @@
+Framework: Svelte 5 with TypeScript, in the Vite starter already in this directory.
+Product: "Shortlist Salon", a SaaS for book clubs reading a literary prize shortlist before the winner is named, timely after the Booker Prize 2026 shortlist was announced on 22 September 2026 with the winner due on 9 November 2026.
+Persistence key: shortlist-salon-v1
+Screens (hash routes): #/books (list), #/books/<id> (detail), #/members (members and reading logs), #/schedule (countdown and reading plan).
+Entities:
+- Book: id, title (required), author (required), pages (whole number > 0), assigned members.
+- Member: id, name (required, unique), reading speed in pages per day (number > 0), predicted winner (one book or none).
+- Reading log: id, member (required), book (required, one assigned to that member), date (required), current page (0 to the pages of the book, never lower than the previous log of that member for that book).
+- Club settings: prize name (required), winner announcement date (required).
+Workflows:
+- Create, edit, delete books, members and reading logs, and assign members to books.
+- The book detail shows the progress percent of each assigned member and the pages per day still needed to finish by the announcement date (days counted from today), flagged as behind when that exceeds the reading speed of the member.
+- On #/schedule, show a countdown to the announcement date and, per member, their assigned books with a projected finish date from their reading speed.
+- The books list shows how many members predict each book as the winner.
+- A header summary shows club completion percent = pages read / pages assigned.
+Seed: 6 books with invented titles and authors (clearly fictional, not the real shortlist), 5 members, 12 reading logs, settings with prize name "Booker Prize 2026" and announcement date 9 November 2026.
+Test ids: book-list, book-row, book-form, book-save, book-delete, member-list, member-form, member-save, log-form, log-save, pace-plan, winner-vote, club-summary, reset-data.

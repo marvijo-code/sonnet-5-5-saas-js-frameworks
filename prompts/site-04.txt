@@ -1,0 +1,16 @@
+Framework: Angular 22 with TypeScript, in the Angular CLI starter already in this directory.
+Product: "Delay Dossier", a SaaS for frequent flyers and small travel agents handling flight disruption claims, timely after broken air traffic control equipment grounded flights at Newark, Philadelphia, JFK and LaGuardia on 21 September 2026.
+Persistence key: delay-dossier-v1
+Screens (hash routes): #/trips (list), #/trips/<id> (detail), #/claims (claim tracker), #/rules (compensation rules).
+Entities:
+- Trip: id, passenger name (required), flight number (required, 2 letters then 1 to 4 digits), flight date (required), origin and destination airport codes (3 letters each, must differ), distance in km (> 0), scheduled arrival time, actual arrival time, cause (weather, air traffic control, technical, crew, other).
+- Claim: id, trip (required), date filed (required), amount claimed in euros (> 0), status (open, paid, rejected).
+- Rules: distance bands with amounts (under 1500 km: 250, 1500 to 3500 km: 400, over 3500 km: 600 euros), minimum arrival delay in hours (default 3), causes treated as extraordinary (default weather and air traffic control), claim window in months (default 24).
+Workflows:
+- Create, edit, delete trips and claims.
+- The trip detail computes the arrival delay, whether the trip is eligible with the reason (delay too short, extraordinary cause, or eligible), the amount from the distance band, and the claim deadline = flight date + claim window, with the days left.
+- On #/rules, edit the bands, the minimum delay, the extraordinary causes and the claim window; every computed value updates.
+- #/claims lists open claims sorted by the claim deadline of their trip and flags those with under 30 days left.
+- A header summary shows the total eligible compensation on trips that have no claim yet.
+Seed: 7 trips (at least 2 with the air traffic control cause and at least 2 eligible), 3 claims, the default rules.
+Test ids: trip-list, trip-row, trip-form, trip-save, trip-delete, eligibility, claim-list, claim-form, claim-save, rules-form, rules-save, unclaimed-summary, reset-data.

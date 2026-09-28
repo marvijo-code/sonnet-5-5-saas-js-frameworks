@@ -1,0 +1,15 @@
+Framework: Vue 3.5 with TypeScript, in the Vite starter already in this directory.
+Product: "Touchpad Tempo", a SaaS for club swim coaches, after a 17-year-old broke the 200 m breaststroke world record at the Asian Games in September 2026.
+Persistence key: touchpad-tempo-v1
+Screens (hash routes): #/swimmers (list), #/swimmers/<id> (detail), #/races (race log and split comparison), #/targets (qualifying targets).
+Entities:
+- Swimmer: id, name (required), birth year (between 1950 and the current year), squad (required).
+- Race: id, swimmer (required), distance (50, 100, 200 or 400 m), stroke (freestyle, backstroke, breaststroke, butterfly, individual medley), date (required), 50 m split times in seconds (the count must equal distance / 50, each > 0); final time = sum of the splits.
+- Target: id, label (required, for example National Juniors), distance, stroke, qualifying time in seconds (> 0).
+Workflows:
+- Create, edit, delete swimmers, races and targets. The race form rejects a split count that does not match the distance.
+- The swimmer detail shows the personal best per event, every time for that event in date order, and the gap to each matching target in seconds and percent.
+- On #/races, pick two races of the same event and compare them split by split with the per-split difference, and mark a race as a negative split when its second half was faster than its first.
+- A header summary shows the count of swimmers within 2 percent of a qualifying time they have not yet reached.
+Seed: 8 swimmers in 2 squads, 16 races covering at least 3 events, 4 targets.
+Test ids: swimmer-list, swimmer-row, swimmer-form, swimmer-save, swimmer-delete, race-list, race-form, race-save, split-compare, target-list, target-form, qualify-summary, reset-data.

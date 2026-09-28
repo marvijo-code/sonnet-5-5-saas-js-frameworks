@@ -1,0 +1,15 @@
+Framework: React 19.3 with TypeScript, in the Vite starter already in this directory.
+Product: "Pumpmark Ledger", a SaaS for small delivery and trade fleets in the EU, where the average diesel price hit a record 2.23 euros a litre in September 2026.
+Persistence key: pumpmark-ledger-v1
+Screens (hash routes): #/vans (list), #/vans/<id> (detail), #/fillups (fill-up log), #/budget (month-end forecast).
+Entities:
+- Van: id, registration (required, unique), driver name (required), fuel economy in litres per 100 km (number > 0), monthly fuel budget in euros (number > 0).
+- Fill-up: id, van (required), date (required, not in the future), litres (number > 0), price per litre in euros (number > 0), odometer in km (number > 0 and greater than the previous fill-up odometer of that van).
+- Price watch: id, date, EU average diesel price per litre in euros (number > 0).
+Workflows:
+- Create, edit, delete vans, fill-ups and price-watch entries.
+- The van detail shows its fill-ups, spend this month, cost per km (total spend / km between its first and last odometer reading) and budget used as a percentage.
+- On #/budget, forecast the month-end spend of each van = spend so far this month / days elapsed x days in the month, and flag every van whose forecast exceeds its budget. A what-if price input recomputes the remaining days of the forecast at that price per litre.
+- A header summary shows fleet spend this month and the count of vans forecast over budget.
+Seed: 5 vans, 18 fill-ups across this month and last month, 6 price-watch entries ending at 2.23.
+Test ids: van-list, van-row, van-form, van-save, van-delete, fillup-list, fillup-form, fillup-save, budget-forecast, whatif-price, fleet-summary, reset-data.

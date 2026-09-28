@@ -1,0 +1,15 @@
+Framework: SolidJS 1.9 with TypeScript, in the Vite starter already in this directory.
+Product: "Rowguard Almanac", a SaaS for vineyard and orchard managers watching for the invasive spotted lanternfly, first found in the EU (Hungary) in September 2026.
+Persistence key: rowguard-almanac-v1
+Screens (hash routes): #/blocks (list), #/blocks/<id> (detail), #/sightings (sighting log), #/inspections (inspection schedule).
+Entities:
+- Block: id, name (required, unique), crop (grape, apple, stone fruit, other), area in hectares (> 0), host trees nearby (yes or no).
+- Sighting: id, block (required), date (required, not in the future), life stage (egg mass, nymph, adult), count (whole number >= 1), confirmed (yes or no), notes.
+- Inspection: id, block (required), inspector (required), done date (required, not in the future), finding (clear or pest found).
+Workflows:
+- Create, edit, delete blocks, sightings and inspections.
+- Each block has a spread-risk score from 0 to 100 = min(100, 10 x confirmed sightings in the last 30 days + 15 if any confirmed adult in the last 30 days + 20 if host trees are nearby + 15 if the crop is grape). The block detail shows the score with each part of the breakdown.
+- Next inspection due = the last done date of the block + an interval by risk (60 or more: 3 days, 30 to 59: 7 days, under 30: 14 days). #/inspections lists every block by due date, overdue first.
+- A header summary shows the count of blocks with risk 60 or more and the count of overdue inspections.
+Seed: 6 blocks, 10 sightings, 6 inspections.
+Test ids: block-list, block-row, block-form, block-save, block-delete, risk-score, sighting-list, sighting-form, sighting-save, inspection-list, inspection-form, overdue-summary, reset-data.
